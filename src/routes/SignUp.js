@@ -15,10 +15,12 @@ function SignUp() {
       if (err) {
         console.log(err);
         console.log("에러");
+      } else {
+        console.log("NO에러");
+        console.log(data);
+        alert("회원가입이 완료되었습니다. 로그인을 해주세요.");
+        navigate("/login");
       }
-      console.log("NO에러");
-      console.log(data);
-      navigate("/login");
     });
   };
   return (

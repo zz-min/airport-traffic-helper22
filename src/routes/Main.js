@@ -9,8 +9,6 @@ function Main() {
     navigate("/login");
   }
 
-
-  
   return <div>Main</div>;
 }
 
