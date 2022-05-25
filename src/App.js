@@ -17,7 +17,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route
-          path="/"
+          path="/*"
           element={loginValidity === "true" ? <Main /> : <Home />}
         />
         <Route path="/login" element={<Login />} />
