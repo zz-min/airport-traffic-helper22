@@ -25,7 +25,7 @@ function Login() {
       onSuccess: (data) => {
         console.log("onSuccess:", data);
         localStorage.setItem("loginValidity", "true");
-        alert("login성공");
+        //alert("login성공");
         navigate("/main");
       },
       onFailure: (err) => {

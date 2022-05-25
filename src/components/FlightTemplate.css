@@ -1,0 +1,21 @@
+.FlightTemplate{
+    width: 500px;
+    background-color: antiquewhite;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 6rem;
+    border-radius: 4ps;
+    overflow: hidden;
+}
+.title{
+    background-color: brown;
+    color:white;
+    height: 4rem;;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;/*세로줄 가운데정렬*/
+    justify-content: center;/*가로줄 가운데정렬*/
+}
+.content{
+    background-color: aliceblue;
+}
