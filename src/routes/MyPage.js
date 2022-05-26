@@ -1,59 +1,40 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Map from "./Map";
+import Map from "../components/Map";
+import MyList from "../components/MyList";
 
 const { kakao } = window;
 
 function MyPage() {
-  const [keyword, setKeyword] = useState();
-  const [keywordId, setKeywordId] = useState();
+  const [myList, setMyList] = useState([]);
 
   useEffect(() => {
-    const container = document.getElementById("map");
-    const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
-    };
-    var map = new kakao.maps.Map(container, options);
-    var markerPosition = new kakao.maps.LatLng(
-      37.365264512305174,
-      127.10676860117488
-    );
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-    });
-    marker.setMap(map);
+    testFunc();
   }, []);
 
-  const search_loc = async () => {
+  const testFunc = async () => {
+    var id = localStorage.getItem("id");
     const r = await axios.get(
-      `https://dapi.kakao.com/v2/local/search/keyword.json?query='${keyword}')`,
-      {
-        headers: {
-          Authorization: "KakaoAK 2a37f23570f77d6e02a9616547f74a05",
-        },
-      }
+      `https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/items/${id}`
     );
-    console.log(r);
-    console.log(r.data);
-    console.log(r.data.document);
-    console.log(r.data.document[0]);
-    setKeywordId(r.data[0]);
-    //alert(keywordId);
+    setMyList(r.data.Items);
+    myList.forEach((t) => {
+      var ap = t.home;
+      console.log(t);
+      console.log(ap.S);
+    });
   };
 
   return (
     <>
+      <div>
+        <button type="button" onClick={testFunc}>
+          testFunc
+        </button>
+      </div>
+      {/* <MyList myList={myList}></MyList> */}
       <Map>MyPage</Map>
-      <label>출발지선택</label>
-      <input
-        type="text"
-        onChange={(event) => setKeyword(event.target.value)}
-      ></input>
-      <button type="button" onClick={search_loc}>
-        조회하기
-      </button>
-      <div id="map" style={{ width: "500px", height: "500px" }}></div>{" "}
     </>
   );
 }
