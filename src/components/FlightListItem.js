@@ -6,7 +6,7 @@ import "./FlightListItem.scss";
 
 const FlightListItem = ({ flight }) => {
   const navigate = useNavigate();
-  const [num, setNum] = useState(26);
+  const [num, setNum] = useState();
   const {
     airlineNm,
     depAirportNm,
@@ -19,8 +19,24 @@ const FlightListItem = ({ flight }) => {
   const [flightInfo, setFlightInfo] = useState([]);
 
   const onClick1 = useCallback(async (text) => {
-    alert("클릭");
-    const r = await axios.put(
+    const r1 = await axios.get(
+      "https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/index"
+    );
+    console.log(r1);
+    console.log(r1.data.Items);
+    var num_ = 0;
+    r1.data.Items.forEach((t) => {
+      var ap = t.index;
+      //console.log(t);
+
+      if (num_ < ap.N) {
+        num_ = ap.N;
+        console.log(ap.N);
+      }
+      console.log(num_);
+    });
+    //alert("클릭");
+    /* const r2 = await axios.put(
       `https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/items`,
       {
         id: localStorage.getItem("id"),
@@ -32,7 +48,7 @@ const FlightListItem = ({ flight }) => {
       }
     );
     setNum(num + 1);
-    navigate("/myPage");
+    navigate("/myPage"); */
   }, []);
 
   return (
