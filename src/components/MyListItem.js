@@ -22,6 +22,7 @@ const MyListItem = ({ myList_, onClick_ }) => {
 
   const timeFormat =
     depPlandTime_.slice(8, 10) + ":" + depPlandTime_.slice(10, 12);
+
   const onClick = useCallback(async () => {
     onClick_(index);
   }, []);
@@ -35,7 +36,6 @@ const MyListItem = ({ myList_, onClick_ }) => {
         <div className="text">{arrAirportNm_}공항 도착</div>
         <div className="text">{dateFormat}</div>
         <div className="text">{timeFormat} 출발</div>
-        <div className="text"></div>
       </div>
     </div>
   );

@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Map from "../components/Map";
 import MyListTemplate from "../components/MyListTemplate";
+import MyListTemplate2 from "../components/MyListTemplate2";
 import MyList from "../components/MyList";
 import MyListSelectBox from "../components/MyListSelectBox";
 import "./MyPage.scss";
@@ -51,13 +50,10 @@ function MyPage() {
     console.log(myList); */
   };
 
-  const onClick = useCallback(
-    async (str) => {
-      //str : 선택된 항목의 index값
-      setSelectIndex(str);
-    },
-    [selectIndex]
-  );
+  const onClick = useCallback(async (str) => {
+    //str : 선택된 항목의 index값
+    setSelectIndex(str);
+  }, []);
 
   return (
     <div className="myPage">
@@ -70,7 +66,7 @@ function MyPage() {
       </div>
       {/* ///////////////////////////////////////////////////// */}
       <div className="myPageRight">
-        <Map>MyPage</Map>
+        <MyListTemplate2></MyListTemplate2>
       </div>
     </div>
   );
