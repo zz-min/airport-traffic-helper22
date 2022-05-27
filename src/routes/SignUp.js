@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import UserPool from "../libs/UserPool";
+import "./Login.scss";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -24,20 +24,20 @@ function SignUp() {
     });
   };
   return (
-    <div>
-      <h1>회원가입 해주세요</h1>
+    <div className="signUpBox">
+      <h1>회원가입</h1>
       <div className="inputBox">
         <form onSubmit={onSubmit}>
-          <span>ID : </span>
+          <span>ㅤㅤIDㅤㅤㅤ:ㅤ</span>
           <input
             value={id}
-            placeholder="id를 입력해주세요"
+            placeholder="아이디를 입력해주세요"
             onChange={(event) => {
               setId(event.target.value);
             }}
           ></input>
           <br></br>
-          <span>PWD : </span>
+          <span>PASSWORDㅤ:ㅤ</span>
           <input
             value={password}
             placeholder="비밀번호를 입력해주세요"
@@ -45,11 +45,11 @@ function SignUp() {
               setPassword(event.target.value);
             }}
           ></input>
-          <button type="submit">Sign Up</button>
+          <br></br>
+          <button type="submit" id="btnSubmit">
+            Sign Up
+          </button>
         </form>
-      </div>
-      <div>
-        <button>Click</button>
       </div>
     </div>
   );

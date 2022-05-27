@@ -12,7 +12,6 @@ const FlightInsert = ({ onInsert }) => {
   const [value2, setValue2] = useState();
   const [value3, setValue3] = useState();
   const [value4, setValue4] = useState();
-  const [value, setValue] = useState();
 
   const getAirlineList = async () => {
     const r = await axios.get(
@@ -36,60 +35,44 @@ const FlightInsert = ({ onInsert }) => {
   }, []);
 
   const onChange1 = useCallback((e) => {
-    setValue1(e.target.value);
-    console.log(e.target.value);
+    setValue1(e.target.value); //console.log(e.target.value);
   }, []);
 
   const onChange2 = useCallback((e) => {
-    console.log("setValue2" + e.target.value);
-    setValue2(e.target.value);
+    setValue2(e.target.value); //console.log("setValue2" + e.target.value);
   }, []);
 
   const onChange3 = useCallback(async (e) => {
-    console.log(e.target.value);
-    setValue3(e.target.value);
+    setValue3(e.target.value); //console.log(e.target.value);
   }, []);
 
   const onChange4 = useCallback((e) => {
-    console.log(e.target.value);
-    setValue4(e.target.value);
+    setValue4(e.target.value); //console.log(e.target.value);
   }, []);
 
   const onSubmit = useCallback(
-    (e) => {
+    async (e) => {
       console.log("submit진입");
-      var test1, test2, test3;
+      var value2_, value3_, value4_;
       airlineList.map((item) => {
-        //console.log("test1 >>" + value2 + "찾는중");
-        //console.log(item.airlineNm);
-        if (item.airlineNm === value2) {
-          console.log("test1 <<<<<<발견>>>>>" + item.airlineId);
-          test1 = item.airlineId;
-        }
+        if (item.airlineNm === value2) value2_ = item.airlineId;
       });
       airportList.map((item) => {
-        //console.log("test2,3 찾는중>>" + item.airportNm);
         if (item.airportNm === value3) {
-          console.log("test2 <<<<<<발견>>>>>" + item.airportId);
-          test2 = item.airportId;
+          value3_ = item.airportId;
         } else if (item.airportNm === value4) {
-          console.log("test3 <<<<<<발견>>>>>" + item.airportId);
-          test3 = item.airportId;
+          value4_ = item.airportId;
         }
       });
 
       //출발날짜 , 항공사 , 출발공항 , 도착공항
-      setValue([value1, test1, test2, test3]);
-      console.log(value);
+      var str = [value1, value2_, value3_, value4_];
+      console.log(str);
+      onInsert(str);
 
-      onInsert(value);
-      //console.log({'value1':value1,'value2':value2,'value3':value3,'value4':value4});
-      //console.log([value1,value2,value3,value4]);
-      //insert후 초기화
-      //setValue1("");setValue2("");setValue3("");setValue4("");setValue("");
       e.preventDefault();
     },
-    [onInsert, value, value1, value2, value3, value4]
+    [onInsert, value1, value2, value3, value4]
   );
 
   return (
@@ -109,7 +92,6 @@ const FlightInsert = ({ onInsert }) => {
                   id="input-date"
                   placeholder="20220524 형식"
                   onChange={onChange1}
-                  /* value={value1} */
                 ></input>
               </div>
               <div className="formItem">

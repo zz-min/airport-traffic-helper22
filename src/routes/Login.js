@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
-import "./Login.css";
+import "./Login.scss";
 import UserPool from "../libs/UserPool";
 
 function Login() {
@@ -38,20 +38,20 @@ function Login() {
     });
   };
   return (
-    <div>
-      <h1>로그인 해주세요</h1>
+    <div className="loginBox">
+      <h1>로그인</h1>
       <div className="inputBox">
         <form onSubmit={onSubmit}>
-          <span>ID : </span>
+          <span>ㅤㅤIDㅤㅤㅤ:ㅤ</span>
           <input
             value={id}
-            placeholder="id를 입력해주세요"
+            placeholder="아이디를 입력해주세요"
             onChange={(event) => {
               setId(event.target.value);
             }}
           ></input>
           <br></br>
-          <span>PWD : </span>
+          <span>PASSWORDㅤ:ㅤ</span>
           <input
             value={password}
             placeholder="비밀번호를 입력해주세요"
@@ -65,7 +65,9 @@ function Login() {
           </button>
         </form>
       </div>
-      <Link to="/SignUp">SignUp</Link>
+      <Link to="/SignUp">
+        <div className="signUpLink">회원가입하러가기</div>
+      </Link>
     </div>
   );
 }

@@ -1,0 +1,42 @@
+.loginBox,
+.signUpBox {
+  background-color: antiquewhite;
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  margin-top: 100px;
+}
+.loginBox {
+  height: 400px;
+}
+.signUpBox {
+  height: 370px;
+}
+
+.loginBox > h1,
+.signUpBox > h1 {
+  font-size: 2.3rem;
+  padding: 40px;
+}
+.inputBox > form,
+.signUpBox > form {
+  font-size: 1.5rem;
+}
+.inputBox > form > input,
+.signUpBox > form > input {
+  font-size: 1.1rem;
+  text-align: center;
+  width: 250px;
+  height: 25px;
+  margin-bottom: 18px;
+}
+#btnSubmit {
+  font-size: 20px;
+  width: 300px;
+  margin: 10px;
+  height: 40px;
+}
+.loginBox > a {
+  font-size: 18px;
+  margin: 20px;
+}

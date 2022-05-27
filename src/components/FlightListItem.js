@@ -6,54 +6,41 @@ import "./FlightListItem.scss";
 
 const FlightListItem = ({ flight }) => {
   const navigate = useNavigate();
-  const [num, setNum] = useState();
-  const {
-    airlineNm,
-    depAirportNm,
-    arrAirportNm,
-    vihicleId,
-    depTime,
-    arrPlandTime,
-    depPlandTime,
-  } = flight;
+
+  const airlineNm = flight[0]; //아시아나항공
+  const depAirportNm = flight[1]; //춟발공항 광주
+  const arrAirportNm = flight[2]; //도착공항 제주
+  const vihicleId = flight[3]; //항공편비행기ID
+  const depTime = flight[4]; ////YYYYMMDDHHMI 출발날짜시간
+  const arrPlandTime = flight[5]; //도착시간-가공버전 15 : 30
+  const depPlandTime = flight[6]; //출발시간-가공버전 14 : 40
+
   const [flightInfo, setFlightInfo] = useState([]);
 
-  const onClick1 = useCallback(async (text) => {
+  const onClick = useCallback(async (text) => {
     const r1 = await axios.get(
-      "https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/index"
+      "https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/items"
     );
-    console.log(r1);
-    console.log(r1.data.Items);
-    var num_ = 0;
-    r1.data.Items.forEach((t) => {
-      var ap = t.index;
-      //console.log(t);
+    var newIndex = r1.data.Count;
 
-      if (num_ < ap.N) {
-        num_ = ap.N;
-        console.log(ap.N);
-      }
-      console.log(num_);
-    });
-    //alert("클릭");
-    /* const r2 = await axios.put(
+    const r2 = await axios.put(
       `https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/items`,
       {
-        id: localStorage.getItem("id"),
-        index: num,
-        depPlandTime: depTime,
-        depAirportNm: depAirportNm,
-        arrAirportNm: arrAirportNm,
+        index: newIndex,
         airlineNm: airlineNm,
+        arrAirportNm: arrAirportNm,
+        depAirportNm: depAirportNm,
+        depPlandTime: depTime,
+        id: localStorage.getItem("id"),
+        validation: true,
       }
     );
-    setNum(num + 1);
-    navigate("/myPage"); */
+    navigate("/myPage");
   }, []);
 
   return (
     <div className="FlightListItem">
-      <div className="checkbox" onClick={onClick1}>
+      <div className="checkbox" onClick={onClick}>
         <MdCheckBoxOutlineBlank />
         <div className="text">{airlineNm}</div>
         <div className="text">

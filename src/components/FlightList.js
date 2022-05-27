@@ -6,7 +6,7 @@ const FlightList = ({ flightList }) => {
   return (
     <div className="FlightList">
       {flightList.map((flight) => (
-        <FlightListItem flight={flight} key={flight.vihicleId} />
+        <FlightListItem flight={flight} key={flight[3]} />
       ))}
     </div>
   );
