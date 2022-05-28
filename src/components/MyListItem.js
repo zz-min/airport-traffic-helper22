@@ -25,6 +25,7 @@ const MyListItem = ({ myList_, onClick_ }) => {
 
   const onClick = useCallback(async () => {
     onClick_(index);
+    console.log("MyListItem-index>>" + index);
   }, []);
 
   return (

@@ -11,18 +11,20 @@ const MyListTemplate2 = ({ selectIndex }) => {
 
   useEffect(() => {
     setting();
-  }, [selectIndex]);
+  }, [btnItemNum, selectIndex]);
 
   const setting = async () => {
     const r = await axios.get(
       `https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/index/${selectIndex}`
     );
+
     var depAirportNm_ = r.data.Items[0].depAirportNm;
     var arrAirportNm_ = r.data.Items[0].arrAirportNm;
     setArrAirportNm(arrAirportNm_.S);
     setDepAirportNm(depAirportNm_.S);
-    var str = [depAirportNm, arrAirportNm];
-    console.log("Dd");
+    //console.log(arrAirportNm);
+    //console.log(arrAirportNm_.S);
+    var str = [depAirportNm_.S, arrAirportNm_.S];
     console.log(str);
     setBtnItemValue(str);
   };

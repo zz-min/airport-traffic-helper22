@@ -10,8 +10,8 @@ function Login() {
   const [password, setPassword] = useState("");
   // var loginValidity = localStorage.getItem("loginValidity");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = (e) => {
+    e.preventDefault();
     const user = new CognitoUser({
       Username: id,
       Pool: UserPool,

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import "./MyListSelectBox.scss";
+import { type } from "@testing-library/user-event/dist/type";
 
 const MyListSelectBox = ({ selectIndex }) => {
   const [index, setIndex] = useState();
@@ -10,14 +11,18 @@ const MyListSelectBox = ({ selectIndex }) => {
   const [depAirportNm, setDepAirportNm] = useState();
   const [dateFormat, setDateFormat] = useState();
   const [timeFormat, setTimeFormat] = useState();
+
   useEffect(() => {
-    setting();
+    //console.log("MyListSelectBox selectIndex1>>" + selectIndex);
+    setting(selectIndex);
   }, [selectIndex]);
 
-  const setting = async () => {
+  const setting = async (selectIndex_) => {
+    //console.log("MyListSelectBox setting selectIndex2>>" + selectIndex_);
     const r = await axios.get(
-      `https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/index/${selectIndex}`
+      `https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/index/${selectIndex_}`
     );
+
     var index_ = r.data.Items[0].index;
     var airlineNm_ = r.data.Items[0].airlineNm;
     var depPlandTime_ = r.data.Items[0].depPlandTime;
@@ -28,14 +33,15 @@ const MyListSelectBox = ({ selectIndex }) => {
     setArrAirportNm(arrAirportNm_.S);
     setDepPlandTime(depPlandTime_.N);
     setDepAirportNm(depAirportNm_.S);
+
     var str =
-      depPlandTime.slice(0, 4) +
+      depPlandTime_.N.slice(0, 4) +
       "/" +
-      depPlandTime.slice(4, 6) +
+      depPlandTime_.N.slice(4, 6) +
       "/" +
-      depPlandTime.slice(6, 8);
+      depPlandTime_.N.slice(6, 8);
     setDateFormat(str);
-    str = depPlandTime.slice(8, 10) + ":" + depPlandTime.slice(10, 12);
+    str = depPlandTime_.N.slice(8, 10) + ":" + depPlandTime_.N.slice(10, 12);
     setTimeFormat(str);
   };
 
@@ -47,8 +53,7 @@ const MyListSelectBox = ({ selectIndex }) => {
             <div>$$ 선택 항공편 $$ </div>
             <div>
               - {airlineNm} - {depAirportNm}공항 출발 - {arrAirportNm}공항 도착
-              -{dateFormat}
-              {timeFormat}
+              - {dateFormat} - {timeFormat}
             </div>
           </div>
         </div>

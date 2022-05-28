@@ -8,8 +8,8 @@ function SignUp() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = (e) => {
+    e.preventDefault(); //
 
     UserPool.signUp(id, password, [], null, (err, data) => {
       if (err) {

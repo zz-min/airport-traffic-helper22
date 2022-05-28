@@ -6,7 +6,9 @@ const MyList = ({ myList, onClick }) => {
   const onClick_ = useCallback(async (str) => {
     //str : 선택된 항목의 인덱스값
     onClick(str);
+    console.log("MyList str>>" + str);
   }, []);
+
   return (
     <div className="MyList">
       {myList.map((myList_) => (

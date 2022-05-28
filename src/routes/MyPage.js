@@ -50,9 +50,10 @@ function MyPage() {
     console.log(myList); */
   };
 
-  const onClick = useCallback(async (str) => {
+  const onClick = useCallback((str) => {
     //str : 선택된 항목의 index값
     setSelectIndex(str);
+    console.log("MyPage str>>" + str);
   }, []);
 
   return (
@@ -66,7 +67,7 @@ function MyPage() {
       </div>
       {/* ///////////////////////////////////////////////////// */}
       <div className="myPageRight">
-        <MyListTemplate2></MyListTemplate2>
+        <MyListTemplate2 selectIndex={selectIndex}></MyListTemplate2>
       </div>
     </div>
   );
