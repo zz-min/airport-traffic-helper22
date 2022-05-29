@@ -32,34 +32,38 @@ const MyListTemplate2 = ({ selectIndex }) => {
   return (
     <div className="MyListTemplate">
       <div className="title">조회할 버튼을 클릭하세요</div>
-      <div className="btnBox">
-        <div
-          className="btnBox_item"
-          id="btnBox_item_1"
-          onClick={() => setBtnItemNum(1)}
-        >
-          출발지 -> 출발공항
+      <div className="content">
+        <div className="btnBox">
+          <div
+            className="btnBox_item"
+            id="btnBox_item_1"
+            onClick={() => setBtnItemNum(1)}
+          >
+            출발지 -> 출발공항
+          </div>
+          <div
+            className="btnBox_item"
+            id="btnBox_item_2"
+            onClick={() => setBtnItemNum(2)}
+          >
+            도착공항 -> 도착지
+          </div>
         </div>
-        <div
-          className="btnBox_item"
-          id="btnBox_item_2"
-          onClick={() => setBtnItemNum(2)}
-        >
-          도착공항 -> 도착지
+        <div className="mapContainer">
+          {/* d<hr></hr> */}
+          <Map btnItemNum={btnItemNum} btnItemValue={btnItemValue}></Map>
         </div>
-        <div
-          className="btnBox_item"
-          id="btnBox_item_3"
-          onClick={() => setBtnItemNum(3)}
-        >
-          출발공항 근처 실시간 주차장정보{" "}
-        </div>
-      </div>
-      <div className="btnItemNum">
-        {/* d<hr></hr> */}
-        <Map btnItemNum={btnItemNum} btnItemValue={btnItemValue}></Map>
       </div>
     </div>
   );
 };
 export default MyListTemplate2;
+/* 
+<div
+            className="btnBox_item"
+            id="btnBox_item_3"
+            onClick={() => setBtnItemNum(3)}
+          >
+            출발공항 근처 주차장정보{" "}
+          </div>
+           */

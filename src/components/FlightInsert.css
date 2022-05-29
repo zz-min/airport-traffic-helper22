@@ -11,6 +11,7 @@ label {
 .formItems {
   display: flex;
   justify-content: space-around;
+  height: 70px;
 }
 .formItem {
   display: inline;

@@ -1,17 +1,56 @@
 .btnBox {
   display: flex;
+  background-color: #f4bfbf;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
 }
-.btnBox_item {
+.btnBox_item2 {
   text-align: center;
   width: 100%;
   height: 50px;
   font-size: 20px;
   border: 1px solid;
 }
+.btnBox_item {
+  background: none;
+  border: 3px solid black;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 10px;
+  width: 100%;
+  height: 40px;
+  /* padding: 2em 6em; */
+  position: relative;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.btnBox_item:hover {
+  color: white;
+  background-color: black;
+}
+
 .btnItemNum {
   background-color: burlywood;
   width: 100%;
   height: 650px;
 }
-Map {
+.mapContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; //아이템 아래정렬
+}
+.content {
+  background-color: papayawhip;
+  height: 700px;
+  border-right: 1px solid;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
 }

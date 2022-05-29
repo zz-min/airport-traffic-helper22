@@ -9,4 +9,5 @@ const FlightTemplate = ({ children }) => {
     </div>
   );
 };
+
 export default FlightTemplate;

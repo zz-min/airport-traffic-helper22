@@ -22,7 +22,6 @@ const FlightListItem = ({ flight }) => {
       "https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/items"
     );
     var newIndex = r1.data.Count;
-
     const r2 = await axios.put(
       `https://ts0xq3oxy8.execute-api.ap-northeast-2.amazonaws.com/items`,
       {
